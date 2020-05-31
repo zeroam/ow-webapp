@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="WordcountApp">
+<html ng-app="App">
 
 <head>
   <meta charset="utf-8">
@@ -14,7 +14,7 @@
   <title>ObjectDetector</title>
 </head>
 
-<body>
+<body ng-controller="Controller">
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
       <img src="{{ url_for('static', filename='icons/network.png') }}" width="30" height="30" alt="" loading="lazy">
@@ -32,18 +32,23 @@
           <a class="nav-link" href="#">Word Count</a>
         </li>
       </ul>
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" type="url" placeholder="URL" aria-label="url">
-        <button class="btn btn-primary my-2 my-sm-0" type="submit">Analyze</button>
+      <form class="form-inline" ng-submit="getResults()">
+        <input class="form-control mr-sm-2" type="url" placeholder="URL" aria-label="url" ng-model="url" required>
+        <button class="btn btn-primary my-2 my-sm-0" type="submit" ng-disabled="loading">Analyze</button>
       </form>
     </div>
   </nav>
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-1">
-      <img class="mt-2 col" src="{{ url_for('static', filename='img/sports-car.jpg')}}" alt="image">
+    <div class="col-xl-7 col-sm-offset-1" id="obj-image">
+      {% raw %}
+      <img class="mt-2 col" src="{{ imagePath }}" alt="image">
+      {% endraw %}
     </div>
-    <div class="col-sm-6 col-sm-offset-1">
-      <h2>Result</h2>
+    <div class="col-xl-4 col-sm-offset-1">
+      <h2>Result<h2>
+      {% raw %}
+      <h3>{{ imageSize }}</h3>
+      {% endraw %}
       <div id="results">
         <table class="table table-striped">
           <thead>
@@ -53,21 +58,21 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Car</td>
-              <td>{a, b, c}</td>
+            {% raw %}
+            <tr ng-repeat="object in objects">
+              <td>{{ object['name'] }}</td>
+              <td>
+                left: {{ object['left'] }}, 
+                right: {{ object['right'] }}, 
+                bottom: {{ object['bottom'] }}, 
+                top: {{ object['top'] }}
+              </td>
             </tr>
-            <tr>
-              <td>Car</td>
-              <td>{a, b, c}</td>
-            </tr>
-            <tr>
-              <td>Car</td>
-              <td>{a, b, c}</td>
-            </tr>
+            {% endraw %}
           </tbody>
         </table>
       </div>
+      <img class="col-xl-4 col-sm-offset-1" src="{{ url_for('static', filename='img/spinner.gif') }}" ng-show="loading">
     </div>
   </div>
 
