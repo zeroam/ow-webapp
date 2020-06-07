@@ -7,13 +7,18 @@
     function ($scope, $log, $http, $timeout) {
 
       $scope.loading = false
-      $scope.imagePath = "/static/img/default.jpg"
+      const type = document.getElementById('type').value
+      if (type === "word_count") {
+        $scope.imagePath = "/static/img/wordcloud.png"
+      } else if (type === "obj_detect") {
+        $scope.imagePath = "/static/img/default.jpg"
+      }
 
       $scope.getResults = function () {
         var userInput = $scope.url
         console.log(userInput)
 
-        $http.post('/obj_detect', { 'url': userInput }).then(
+        $http.post(`task/${type}`, { 'url': userInput }).then(
           function (results) {
             var jobID = results.data
             $log.log(jobID)

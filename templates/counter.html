@@ -11,7 +11,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 
-  <title>ObjectDetector</title>
+  <title>WordCounter</title>
 </head>
 
 <body ng-controller="Controller">
@@ -25,48 +25,42 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="/">Object Detection</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="/counter">Word Count</a>
         </li>
       </ul>
       <form class="form-inline" ng-submit="getResults()">
-        <input type="hidden" id="type" value="obj_detect">
+        <input type="hidden" id="type" value="word_count">
         <input class="form-control mr-sm-2" type="url" placeholder="URL" aria-label="url" ng-model="url" required>
         <button class="btn btn-primary my-2 my-sm-0" type="submit" ng-disabled="loading">Analyze</button>
       </form>
     </div>
   </nav>
   <div class="row">
-    <div class="col-xl-7 col-sm-offset-1" id="obj-image">
+    <div class="col-xl-6 col-sm-offset-1" id="obj-image">
       {% raw %}
       <img class="mt-2 col" src="{{ imagePath }}" alt="image">
       {% endraw %}
     </div>
     <div class="col-xl-4 col-sm-offset-1">
-      <h2>Result<h2>
-      {% raw %}
-      <h3>{{ imageSize }}</h3>
-      {% endraw %}
+      <h2>Result</h2>
       <div id="results">
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>Object</th>
-              <th>Coordinates</th>
+              <th>Word</th>
+              <th>Count</th>
             </tr>
           </thead>
           <tbody>
             {% raw %}
             <tr ng-repeat="object in objects">
-              <td>{{ object['name'] }}</td>
+              <td>{{ object['word'] }}</td>
               <td>
-                left: {{ object['left'] }}, 
-                right: {{ object['right'] }}, 
-                bottom: {{ object['bottom'] }}, 
-                top: {{ object['top'] }}
+                {{ object['count'] }}
               </td>
             </tr>
             {% endraw %}
