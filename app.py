@@ -17,12 +17,12 @@ q = Queue(connection=conn)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", title="Object Detection")
 
 
 @app.route("/counter")
 def counter():
-    return render_template("counter.html")
+    return render_template("counter.html", title="Word Counter")
 
 
 @app.route("/task/obj_detect", methods=["POST"])
