@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+    redis:
+        container_name: ow-redis
+        image: redis:alpine
+    web:
+        build: .
+        image: ow-flask
+        container_name: ow-web
+        volumes:
+            - ./static:/src/app/static
+        ports:
+            - 5000:5000
+        env_file:
+            - .env
+        command: python3 app.py
+    worker:
+        image: ow-flask
+        container_name: ow-worker
+        volumes:
+            - ./static:/src/app/static
+        depends_on:
+            - redis
+        env_file:
+            - .env
+        command: python3 worker.py
