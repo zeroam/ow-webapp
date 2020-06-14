@@ -23,7 +23,7 @@ def get_nouns(text: str, limit: int = 50) -> list:
 
 
 def create_wordcloud(words: dict, img_path: str):
-    font_path = "/c/Windows/Fonts/malgun.ttf"
+    font_path = os.path.join(CUR_DIR, "malgun.ttf")
     word_cloud = WordCloud(font_path=font_path).generate_from_frequencies(words)
     word_cloud.to_file(img_path)
 
