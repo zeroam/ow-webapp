@@ -42,45 +42,6 @@
     </div>
   </nav>
   {% block result %}{% endblock %}
-  <!-- <div class="row">
-    <input type="hidden" id="type" value="obj_detect">
-    <div class="col-xl-7 col-sm-offset-1" id="obj-image">
-      {% raw %}
-      <img class="mt-2 col" src="{{ imagePath }}" alt="image">
-      {% endraw %}
-    </div>
-    <div class="col-xl-4 col-sm-offset-1">
-      <h2>Result<h2>
-          {% raw %}
-          <h3>{{ imageSize }}</h3>
-          {% endraw %}
-          <div id="results">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Object</th>
-                  <th>Coordinates</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% raw %}
-                <tr ng-repeat="object in objects">
-                  <td>{{ object['name'] }}</td>
-                  <td>
-                    left: {{ object['left'] }},
-                    right: {{ object['right'] }},
-                    bottom: {{ object['bottom'] }},
-                    top: {{ object['top'] }}
-                  </td>
-                </tr>
-                {% endraw %}
-              </tbody>
-            </table>
-          </div>
-          <img class="col-xl-4 col-sm-offset-1" src="{{ url_for('static', filename='img/spinner.gif') }}"
-            ng-show="loading">
-    </div>
-  </div> -->
 
   <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
