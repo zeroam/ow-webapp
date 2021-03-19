@@ -6,7 +6,7 @@ konlpy==0.5.2
 lxml==4.5.1
 opencv-contrib-python==4.2.0.34
 pandas==1.0.3
-Pillow==7.1.2
+Pillow==8.1.1
 redis==3.5.3
 requests==2.23.0
 rq==1.4.2
