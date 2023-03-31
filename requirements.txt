@@ -7,7 +7,7 @@ lxml==4.5.1
 opencv-contrib-python==4.2.0.34
 pandas==1.0.3
 Pillow==7.1.2
-redis==3.5.3
+redis==4.4.4
 requests==2.23.0
 rq==1.4.2
 wordcloud==1.7.0
