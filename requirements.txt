@@ -8,7 +8,7 @@ opencv-contrib-python==4.2.0.34
 pandas==1.0.3
 Pillow==7.1.2
 redis==3.5.3
-requests==2.23.0
+requests==2.31.0
 rq==1.4.2
 wordcloud==1.7.0
 pyOpenSSL==19.1.0
